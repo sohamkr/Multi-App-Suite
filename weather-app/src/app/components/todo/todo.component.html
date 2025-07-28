@@ -1,0 +1,25 @@
+<body>
+    <div class="todo-container">
+        <h2>TO-DO LIST</h2>
+      
+        <div>
+          <input [(ngModel)]="newTodoTitle" placeholder="Enter a task..." />
+          <button (click)="addTodo()" class="add-btn">Add</button>
+        </div>
+      
+        <div class="filter-buttons">
+          <button (click)="setFilter('all')" [class.active]="filter === 'all'">All</button>
+          <button (click)="setFilter('completed')" [class.active]="filter === 'completed'">Completed</button>
+          <button (click)="setFilter('pending')" [class.active]="filter === 'pending'">Pending</button>
+        </div>
+      
+        <ul cdkDropList (cdkDropListDropped)="drop($event)">
+          <li *ngFor="let todo of todos | filterTodos:filter" [class.completed]="todo.completed" cdkDrag>
+            <span [class.completed]="todo.completed">{{ todo.title }}</span>
+            <button (click)="toggleTodo(todo.id)">✔</button>
+            <button (click)="deleteTodo(todo.id)" class="delete-btn">✖</button>
+          </li>
+        </ul>
+      </div>
+</body>
+  

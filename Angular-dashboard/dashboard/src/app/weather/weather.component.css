@@ -1,0 +1,123 @@
+/* ✅ Main Weather Container */
+
+.back{
+  height: 100vh;
+    width: 100%;
+    background: linear-gradient(135deg, #d4fc79, #96e6a1);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white; /* Ensures text is visible */
+    font-family: 'Poppins', sans-serif;
+
+}
+.weather-container {
+  max-width: 900px;
+  margin: 50px auto;
+  padding: 25px;
+  background: linear-gradient(135deg, #2193b0, #6dd5ed);
+  border-radius: 15px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ✅ Close Button */
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  /* background: rgba(255, 0, 0, 0.8); */
+  color: purple;
+  border: none;
+  font-size: 20px;
+  padding: 5px 12px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.close-btn:hover {
+  background: red;
+}
+
+/* ✅ Header Styling */
+.header h1 {
+  font-size: 28px;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.header p {
+  font-size: 16px;
+}
+
+/* ✅ Dropdown Styling */
+.select-container {
+  margin: 20px 0;
+}
+
+.form-select {
+  font-size: 16px;
+  padding: 10px;
+  border-radius: 8px;
+  background: white;
+  color: #333;
+}
+
+/* ✅ Forecast Container */
+.forecast-container {
+  display: flex;
+  gap: 15px;
+  overflow-x: auto;
+  padding-bottom: 15px;
+  margin-top: 20px;
+  justify-content: center;
+}
+
+/* ✅ Forecast Item */
+.forecast-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  min-width: 130px;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s ease;
+}
+
+.forecast-item:hover {
+  transform: scale(1.05);
+}
+
+/* ✅ Date and Temperature Styling */
+.forecast-date {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.forecast-day {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.forecast-icon {
+  width: 55px;
+  height: 55px;
+  margin-bottom: 5px;
+}
+
+.forecast-temp {
+  font-size: 18px;
+  font-weight: bold;
+  color: #ffeb3b;
+}

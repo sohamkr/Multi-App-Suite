@@ -1,0 +1,29 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .container {
+    max-width: 100vw;
+  }
+  
+  .content-box {
+    min-height: 80vh; /* Ensure content area has enough height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  button {
+    width: 200px; /* Make buttons consistent in size */
+  }
+  
+  /* app-weather, app-currency-converter, app-todo {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  } */
+  :host {   display: block; /* ensure the component fills its space */ }

@@ -1,0 +1,42 @@
+<body>
+    <div class="todo-container">
+      <!-- Close Button -->
+      <button class="close-btn" (click)="goHome()">✖</button>
+  
+      <h2>📝 TO-DO LIST</h2>
+  
+      <!-- Input Box for Adding Tasks -->
+      <div class="input-container">
+          <input [(ngModel)]="newTodoTitle" placeholder="Enter a task..." />
+          <button (click)="addTodo()" class="add-btn">➕ Add</button>
+      </div>
+  
+      <!-- Filter Buttons -->
+      <div class="filter-buttons">
+          <button (click)="filter = 'all'" [class.active]="filter === 'all'">All</button>
+          <button (click)="filter = 'completed'" [class.active]="filter === 'completed'">✅ Completed</button>
+          <button (click)="filter = 'pending'" [class.active]="filter === 'pending'">⏳ Pending</button>
+      </div>
+  
+      <!-- Task List -->
+      <div class="task-box">
+          <ul *ngIf="todoService.todos() && todoService.todos().length > 0; else noTodos">
+              <li *ngFor="let todo of todoService.todos() | filterTodos:filter; trackBy: trackByTodoId" 
+                  [class.completed]="todo?.completed">
+                  
+                  <span *ngIf="!todo.editing">{{ todo?.title }}</span>
+                  <input *ngIf="todo.editing" [(ngModel)]="todo.title" (blur)="saveEdit(todo)" />
+  
+                  <button *ngIf="!todo.editing" (click)="editTodo(todo)" class="edit-btn">✏</button>
+                  <button (click)="toggleTodo(todo)" class="toggle-btn">✔</button>
+                  <button *ngIf="todo && todo._id" (click)="deleteTodo(todo._id!)" class="delete-btn">✖</button>
+              </li>
+          </ul>
+  
+          <ng-template #noTodos>
+              <p>No tasks found. Add a new task above.</p>
+          </ng-template>
+      </div>
+  </div>
+  </body>
+  

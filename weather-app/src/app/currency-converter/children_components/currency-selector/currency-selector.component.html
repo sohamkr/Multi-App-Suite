@@ -1,0 +1,24 @@
+
+  <div *ngIf="!isEdited">
+    <input  type="text" class="form-control" (keyup.escape)="HideDropdown()" placeholder="Type to search..." (focusout)="focusOutInput()" [(ngModel)]="findCurrency" (ngModelChange)="valueFinding()" autofocus #search_input>
+  </div>
+  <div class="dropdown">
+    <button *ngIf="isEdited"  class="btn btn-secondary dropdown-toggle currency-dropdown" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" (click)="dropClick()"> 
+         {{selectedCurrency.symbol}} 
+         {{selectedCurrency.name}}
+        {{selectedCurrency.full_name ? ' - '+selectedCurrency.full_name : '' }} 
+        
+    </button>
+    <div class="dropdown-menu" [id]="'currenciesList ' + selectorId" (mouseover)="ignoreFocusOut=currencies.length>0" (mouseout)=" ignoreFocusOut=false">
+        <ul class="scrollable-menu" role="menu" aria-labelledby="dropdownMenuButton">
+            <li *ngFor="let currency of currencies">
+                <a (click)="selectCurrencyFunc(currency); HideDropdown()">
+                <div class="currency-flag currency-flag-{{currency.name.toLowerCase()}}"></div>
+                <div class="currency-flag currency-flag-{{currency.name }}"></div>
+                <div class="currency-name">{{currency.name}}{{currency.full_name ? ' - '+currency.full_name : '' }} {{currency.symbol}}</div>
+                </a>
+            </li>
+            <li class="info-dropdown-element" *ngIf="noResultsFind">No results available</li>
+        </ul>
+    </div>
+  </div>

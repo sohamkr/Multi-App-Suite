@@ -1,0 +1,49 @@
+<body>
+  <div class="currency-converter">
+  <h1>CURRENCY CONVERTER</h1>
+  <form (ngSubmit)="submitForm()"> 
+    <div>
+      <label for="exampleAmount"><strong>Amount</strong></label>
+      <div>
+        <input class="form-control" [(ngModel)]="amount_value" (change)="changeAmountValue()" name="amount"> 
+      </div>
+    </div>
+
+    
+    <div class="from-to-row" style="display: flex; align-items: center; gap: 15px;">
+      <div class="from-container" style="flex: 1;">
+        <label for="changeFrom">From</label>
+        <app-currency-selector [selectorId]="'from'" [changeCurrency]="selectFrom" [(ngModel)]="fromCurrency" name="fromCurrency" #from></app-currency-selector>
+      </div>
+
+      <button type="button" (click)="swapCurrencies()" class="swap-button" style="padding: 10px; font-size: 14px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; transition: background 0.3s;">
+        ⇄
+      </button>
+
+      <div class="to-container" style="flex: 1;">
+        <label for="changeTo">To</label>
+        <app-currency-selector [selectorId]="'to'" [changeCurrency]="selectTo" [(ngModel)]="toCurrency" name="toCurrency" #to></app-currency-selector>
+      </div>
+    </div>
+
+    <div>
+      <button type="submit" class="btn btn-primary btn-block app-button" *ngIf="!isResult">Convertor</button>
+    </div>
+  </form>
+
+  <div class="resultCurrency" *ngIf="isResult">
+    <div class="result-from">
+      {{resultFrom}}
+    </div>
+    <div class="result-to">
+      {{resultTo}}
+    </div>
+    <div class="result-info">
+      {{resultInfo}}
+    </div>
+  </div>
+</div>
+</body>
+
+
+

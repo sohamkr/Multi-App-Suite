@@ -1,0 +1,28 @@
+<div class="back">
+  <div class="weather-container">
+    <button class="close-btn" (click)="goHome()">✖</button>
+  
+    <div class="header text-center">
+      <h1 class="display-6">🌤️ Weather Forecast</h1>
+      <p class="lead">Select a city to get real-time weather updates</p>
+    </div>
+  
+    <div class="select-container">
+      <label for="city" class="form-label">Choose a City:</label>
+      <select id="city" class="form-select" [(ngModel)]="selectedCity" (change)="onCityChange()">
+        <option *ngFor="let city of cities" [value]="city">{{ city }}</option>
+      </select>
+    </div>
+  
+    <!-- Weather Forecast in a Horizontal Scrollable Row -->
+    <div class="forecast-container">
+      <div class="forecast-item" *ngFor="let forecastday of weatherData">
+        <div class="forecast-date">{{ forecastday.valid_date | date:'MMM d' }}</div>
+        <div class="forecast-day">{{ forecastday.valid_date | date:'EEEE' }}</div>
+        <img class="forecast-icon" [src]="imgPath + forecastday.weather.icon + '.png'" alt="Weather Icon">
+        <div class="forecast-temp">{{ forecastday.temp }}°C</div>
+      </div>
+    </div>
+  </div>
+  
+</div>

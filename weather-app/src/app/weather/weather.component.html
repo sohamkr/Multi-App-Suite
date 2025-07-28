@@ -1,0 +1,20 @@
+<div class="weather-container">
+    <h1>Select a City to Fetch Weather Data</h1>
+    <div>
+      <label for="city">City:</label>
+      <select id="city" [(ngModel)]="selectedCity" (change)="onCityChange()">
+
+        <option *ngFor="let city of cities" [value]="city">{{ city }}</option>
+      </select>
+    </div>
+    <div *ngFor="let forecastday of weatherData">
+        
+        <div>{{ forecastday.valid_date | date:'MMM d' }}</div>
+        <div>{{ forecastday.valid_date | date:'EEEE' }}</div>
+        <img [src]="imgPath + forecastday.weather.icon + '.png'">
+        <div>{{ forecastday.temp }}°C</div>
+    
+    </div>
+  </div>
+
+  
